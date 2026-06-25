@@ -6,7 +6,18 @@
 **Environment:** SOC Home Lab — Wazuh 4.x + Windows 10 Agent
 
 ---
+## 📊 Detections in Action
 
+### Wazuh Dashboard — Alerts Firing
+![Wazuh Alerts](wazuh-alerts.png)
+
+### Custom Rule XML
+![Rule XML](wazuh-alerts2.png)
+
+### PowerShell Logging Setup
+![PowerShell Setup](wazuh-alerts3.png)
+
+---
 ## 📋 Overview
 
 Custom Wazuh detection rules for PowerShell abuse — one of the most common attacker techniques in the wild.
