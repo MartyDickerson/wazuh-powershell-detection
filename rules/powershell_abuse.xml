@@ -1,0 +1,51 @@
+<group name="windows,powershell,attack,">
+
+  <!-- PowerShell Encoded Command -->
+  <rule id="100010" level="12">
+    <if_group>windows</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(-enc|-encodedcommand)</field>
+    <description>PowerShell encoded command detected - Possible obfuscation</description>
+    <mitre>
+      <id>T1059.001</id>
+      <id>T1027</id>
+    </mitre>
+    <group>powershell_abuse,</group>
+  </rule>
+
+  <!-- PowerShell Download Cradle -->
+  <rule id="100011" level="14">
+    <if_group>windows</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(downloadstring|downloadfile|webrequest|webclient|iex|invoke-expression)</field>
+    <description>PowerShell download cradle detected - Possible malware delivery</description>
+    <mitre>
+      <id>T1059.001</id>
+      <id>T1105</id>
+    </mitre>
+    <group>powershell_abuse,</group>
+  </rule>
+
+  <!-- PowerShell Bypass Execution Policy -->
+  <rule id="100012" level="10">
+    <if_group>windows</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(-nop|-noprofile|-ep bypass|-executionpolicy bypass)</field>
+    <description>PowerShell execution policy bypass detected</description>
+    <mitre>
+      <id>T1059.001</id>
+      <id>T1562</id>
+    </mitre>
+    <group>powershell_abuse,</group>
+  </rule>
+
+  <!-- PowerShell Hidden Window -->
+  <rule id="100013" level="10">
+    <if_group>windows</if_group>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(-w hidden|-windowstyle hidden)</field>
+    <description>PowerShell hidden window detected - Possible evasion</description>
+    <mitre>
+      <id>T1059.001</id>
+      <id>T1564</id>
+    </mitre>
+    <group>powershell_abuse,</group>
+  </rule>
+
+</group>
